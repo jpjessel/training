@@ -1,6 +1,13 @@
 import pandas as pd
 
-def process_data(filename, file_nameprefix, date_columns_name, category_column_name, value_column_name):
+def process_data(
+        filename, 
+        file_nameprefix, 
+        date_columns_name, 
+        category_column_name, 
+        value_column_name
+    ):
+    
     df = pd.read_csv(file_nameprefix + filename)
 
     df = df.dropna()
