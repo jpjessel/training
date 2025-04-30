@@ -8,7 +8,7 @@ for v in df['value']:
     squared.append(v ** 2)
 
 df['squared'] = squared
-
+print(df)
 # Exercise 2:
 evens = []
 for n in range(100):
