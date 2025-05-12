@@ -23,10 +23,10 @@ class ColumnNames:
 def write_summary(func):
     @wraps(func)
     def wrapper(dataframe, column_names, output_path):
-            df = dataframe.dropna()
-            df[column_names.date] = pd.to_datetime(df[column_names.date])
-            summary: pd.Series = func(df, column_names)
-            summary.to_csv(output_path)
+        df = dataframe.dropna()
+        df[column_names.date] = pd.to_datetime(df[column_names.date])
+        summary: pd.Series = func(df, column_names)
+        summary.to_csv(output_path)
     return wrapper
 
 @write_summary
