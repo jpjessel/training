@@ -1,12 +1,12 @@
-# Training Modules
+# Python Training Modules
 
-## Session 1
+Welcome to the Python training repository! These modules are designed to help you write cleaner, more maintainable, and more Pythonic code.
 
-### Single Responsbility Principle
-A SOLID Principle, "A class should have one, and only one, reason to change."
+---
 
-### Dry code
-Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
+## Table of Contents
 
-### KISS
-Keep it simple stupid, most systems work best if they are kept simple, rather than made complicated.
+| Session | Topics Covered | Documentation Link | Exercises Link
+|---|---|---|---|
+| 1 | SRP, DRY, KISS, Decorators, Types, Modules, Classes | [View](./documentation/session_1.md) | [Example](./sessions/session_1/example.py), [Exercises](./sessions/session_1/exercises.py)
+| 2 | TBD | TBD | TBD |
