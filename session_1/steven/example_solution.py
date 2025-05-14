@@ -35,7 +35,7 @@ def output_csv(
     ) -> None:
     df.to_csv(export_path, index=False)
 
-def process_data(
+def main(
         file_prefix: str, 
         filename: str, 
         date_cols: List[str], 
@@ -49,9 +49,6 @@ def process_data(
     df = convert_date_cols(df, date_cols)
     df = calculate_summary_stats(df, category_column_name, value_column_name, summary)
     output_csv(df, export_path)
-
-def main(file_path):
-    process_data(file_path)
 
 if __name__ == "__main__":
     main()
