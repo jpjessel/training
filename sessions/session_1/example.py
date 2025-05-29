@@ -19,5 +19,7 @@ def process_data(filename, file_nameprefix, date_columns_name, category_column_n
 def main(file_path):
     process_data(file_path)
 
+# When importing a package, python will run that file -- if we don't want to run that file, if it's main file, run this code 
+# (e.g., when importing library, run main) 
 if __name__ == "__main__":
     main()
