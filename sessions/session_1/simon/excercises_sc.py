@@ -2,18 +2,26 @@
 import pandas as pd
 
 df = pd.DataFrame({'value': [1, 2, 3, 4, 5]})
-squared = []
+# squared = []
 
-for v in df['value']:
-    squared.append(v ** 2)
+# for v in df['value']:
+#     squared.append(v ** 2)
 
-df['squared'] = squared
+# df['squared'] = squared
+
+def squared(value: int) : 
+    return value ** 2
+
+df = df["value"].apply(squared)
 
 # Exercise 2:
-evens = []
-for n in range(100):
-    if n % 2 == 0:
-        evens.append(n)
+# evens = []
+# for n in range(100):
+#     if n % 2 == 0:
+#         evens.append(n)
+
+evens_corrected = [x for x in range(100) if x % 2 == 0]
+print(evens_corrected)
 
 # Exercise 3
 # Take the array [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
