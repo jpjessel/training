@@ -8,10 +8,11 @@ class School:
         self.teachers = defaultdict(list)
         self.students = []
 
-    def add_class(self, class_name):
+    def add_class(self, class_name: str):
         print(f"Adding class, {class_name}")
         return self.classes.append(class_name)
-    
+            
+
     def add_teacher(self, teacher, subject):
         print(f"Adding teacher and subject")
         return self.teachers[subject].append(teacher) 
@@ -21,7 +22,6 @@ class Student(School):
         super().__init__(school)
         self.student_name = name
 
-    
 primary_school = School("Mayfield")
 primary_school.add_class("Maths")
 for class_room in primary_school.classes:
