@@ -58,9 +58,7 @@ for key, value in schemas_and_columns.items():
     elif key == 'imd':
         df_processed = df[
             (df['Area Type'].str.lower() == "all".lower()) &
-            df['Category'].notnull() &
-            df['Category Type'].str.contains("County", na=False) &
-            df['Category Type'].str.contains("UA", na=False)
+            df['Category'].notnull()
         ]
         
     df_processed: pd.DataFrame = df.rename(columns={c: value['col_names'].get(c, c) for c in df.columns})
