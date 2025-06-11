@@ -10,29 +10,70 @@
 
 from collections import defaultdict
 
-class Snomed: 
+class ClinicalCodes: 
+    def __init__(
+            self, 
+            disease,
+            disease_dict: dict[str, dict]
+        ):
+        self.disease_dict = disease_dict
+        self.disease_area = disease
+        self.codelist_schema = disease_dict["clinical_code_type"]
+        self.codelist_map = {}
+        self.StartDate = disease_dict["active_start_date"]
+        self.EndDate = disease_dict["active_end_date"]
+    
+    try: 
+        if 
+    except: 
+        KeyError
+    
+    def add_ClinicalCodeTerm(self, code_type: str):
+        code_type = code_type.lower()
+        ClinicalCodeKeys = {}
+        for key,value in self.disease_dict[code_type].items():
+            ClinicalCodeKeys[key] = self.codelist_map.get(value["CodeID"])
+
+        return ClinicalCodeKeys
+    
+    def add_ClinicalCodeTerm(self, code_type: str):
+        code_type = code_type.lower()
+        ClinicalCodeKeys = {}
+        for key,value in self.disease_dict[code_type].items():
+            ClinicalCodeKeys[value["CodeTerm"]] = key
+
+        return ClinicalCodeKeys
+
+InfluenzaCodes = ClinicalCodes("Influenza", 
+                               {"clinical_code_type": "ICD10", 
+                                "active_start_date": "2020-01-01", 
+                                "active_end_date": "2025-06-01", 
+                                "ICD10": {"ID": "13456", 
+                                          "Term": "Influenza"}})
+
+class Snomed(ClinicalCodes): 
 
     def __init__(
             self, 
-            disease_dict: dict[str, dict]
+            disease
         ): 
-        self.disease_dict = disease_dict
-        self.disease_area = disease_dict["disease_name"]
-        self.Snomed_map = {}
-        self.DatesActive = disease_dict["dates_active"]
-
-    def add_SnomedID(self, disease: str):
-        disease = disease.lower() 
+        super().__init__(disease)
+        self.codelist_schema = "Snomed"
+    
+    def add_SnomedTerm(self, code_type: str):
+        code_type = code_type.lower()
         SnomedKeys = {}
-        for key,value in self.disease_dict[disease].items():
-            SnomedKeys[key] = self.Snomed_map.get(value["SnomedID"])
-            
+        for key,value in self.disease_dict[code_type].items():
+            SnomedKeys[key] = self.codelist_map.get(value["SnomedID"])
+
         return SnomedKeys
     
-    def add_SnomedTerm(self, filter: str):
-        disease = disease.lower() 
+    def add_SnomedTerm(self, code_type: str):
+        code_type = code_type.lower()
         SnomedKeys = {}
-        for key,value in self.disease_dict[disease].items():
+        for key,value in self.disease_dict[code_type].items():
             SnomedKeys[value["SnomedTerm"]] = key
 
         return SnomedKeys
+
+    
